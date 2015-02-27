@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html xmlns:wb="http://open.weibo.com/wb" lang="zh-cn">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="renderer" content="webkit">
+<meta name="keywords" content="1212招聘节,双12招聘节,招聘周,招聘,互联网招聘,移动互联网招聘,社交招聘,IT招聘,微信招聘,微博招聘,豆瓣招聘,跳槽,高薪职位">
+<meta name="description" content="最靠谱的招聘社区。1212创业企业招聘周。">
+<title>账号管理&nbsp;-&nbsp;</title>
+<script src="js/jquery1.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="css/Index_aio1.css">
+
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]><script src="/Public/html5shiv-3.7.2/html5shiv.min.js"></script><script src="/Public/Respond/dest/respond.min.js"></script><![endif]-->
+
+<script type="text/javascript">
+$(document).ready(function() {
+$("#login").click(function() {
+
+
+
+var form_data = {
+name:$("#name").val(),
+name_abb:$("#name_ abb").val(),
+city:$("#city").val(),
+address_detail:$("#address_detail").val(),
+property:$("#property").val(),
+industry:$("#industry").val(),
+scale:$("#scale").val(),
+
+lightspot_introduce:$("#lightspot_introduce").val(),
+about:$("#about").val(),
+website:$("#website").val(),
+Phone:$("#Phone").val(),
+contact:$("#contact").val(),
+logo:$("#logo").val(),
+business_license:$("#business_license").val(),
+
+is_ajax: 1
+};
+$.ajax({
+type: "POST",
+url: "../wanshanziliao1.php",
+data: form_data,
+
+success: function(json)
+{
+alert(json);
+
+$('#result').html(json);
+
+ var value=json;
+
+      if(value=="登陆成功"){
+
+location.href = "index.php";
+
+}else{
+
+$('#result').html(json)}; 
+
+}
+});
+ 
+return false;
+});
+ 
+});
+</script> 
+</head>
+<body>
+<div style="top: 0px; opacity: 1;" id="js-header" class="">
+  <div class="header-wrap clearfix">
+    <div class="logo-wrap"><a href="" class="logo hide-text"><img src="img/logo.png"></a></div>
+
+        <div class="header-right">
+        <ul>
+            <li class="header-right-item">
+               
+            </li>
+            <li class="header-right-item">
+                <a id="js-header-login" href="../denglu.php">
+                    登录
+                </a>
+            </li>
+            <li class="header-right-item">
+                <a id="js-header-register" href="../login.php">
+                    注册
+                </a>
+            </li>
+        </ul>
+    </div>
+    <ul class="header-mid">
+        <li>
+            <a href="">兼职</a>
+        </li>
+        <li>
+            <a href="">实习生</a>
+        </li>
+       <li>
+            <a href="">论坛</a>
+        </li>
+    </ul>
+      </div>
+</div>
+
+
+
+<link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+
+<div class="container">
+  
+  <div class="row wei-user-heading">
+    
+  </div>
+</div>
+<div class="container-fluid container-nav-tabs-2">
+  <div class="container">
+    <ul class="nav nav-tabs-2" role="tablist">
+      <li><a href="">职位管理</a></li>
+      <li><a href="">简历管理</a></li>
+      <li><a href="">企业资料</a></li>
+      <li class="active"><a href="">账号设置</a></li>
+    </ul>
+  </div>
+</div>
+
+        <div class="container">
+  <div class="row wei-user-admin-container">
+    <div class="col-xs-3 col-md-2 sidebar-menu">
+      <ul class="list-group">
+      
+        <li class="list-group-item"><a class="text-primary" href=""><i class=" fa-2x fa-calendar"></i>职位管理</a></li>
+        <li class="list-group-item notifier-number" data-notifier-number="0"><a class="text-label" href="http://www.renpu.com/e/admin/apply"><i class="fa-calendar1"></i>简历管理</a></li>
+        <!--<li class="list-group-item"><a class="text-label" href=""><i class="fa fa-2x fa-comments-o"></i>评论管理</a></li>-->
+        <li class="list-group-item notifier notifier-lg"><a class="text-label" href=""><i class="fa-calendar2"></i>企业资料</a></li>
+        <li class="list-group-item"><a class="text-label" href=""><i class="fa-calendar3"></i>账号设置</a></li>
+      </ul>
+    </div>
+    <div class="col-xs-15 col-md-10 wei-user-admin-content">
+      <link href="css/imgareaselect-default.css" rel="stylesheet" type="text/css">
+    
+      <div class="wei-user-admin-title-bar">
+        <div class="container-nav-tabs-2">
+          <ul class="nav nav-tabs-2" role="tablist">
+            <li class="active"><a href="">企业信息</a></li>
+            <li class="notifier"><a href="">企业验证</a></li>
+           
+          </ul>
+        </div>
+      </div>
+      <form class="form-horizontal" id="form" method="post" action="../qiyeziliao1.php" enctype="multipart/form-data">
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="name"><span>*</span>&nbsp;企业名称</label>
+          <div class="col-sm-5">
+            <input class="form-control" id="name" name="name" value="fdgs" placeholder="与营业执照一致的企业全名" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="alias">企业简称</label>
+          <div class="col-sm-5">
+            <input class="form-control" id="name_ abb" name="name_ abb" value="" placeholder="大众熟知的企业简称" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="city"><span>*</span>&nbsp;所在城市</label>
+          <div class="col-sm-5">
+            <select class="form-control" name="city" id="city">
+              <option value="11" selected="selected">北京</option>
+              <option value="12">上海</option>
+              <option value="13">广州</option>
+              <option value="14">深圳</option>
+              <option value="15">杭州</option>
+              <option value="16">苏州</option>
+              <option value="17">南京</option>
+              <option value="18">大连</option>
+              <option value="19">成都</option>
+              <option value="21">天津</option>
+              <option value="22">沈阳</option>
+              <option value="23">长春</option>
+              <option value="24">哈尔滨</option>
+              <option value="25">石家庄</option>
+              <option value="26">秦皇岛</option>
+              <option value="27">太原</option>
+              <option value="28">呼和浩特</option>
+              <option value="31">无锡</option>
+              <option value="32">济南</option>
+              <option value="33">厦门</option>
+              <option value="34">宁波</option>
+              <option value="35">福州</option>
+              <option value="36">青岛</option>
+              <option value="37">合肥</option>
+              <option value="38">扬州</option>
+              <option value="41">香港</option>
+              <option value="42">武汉</option>
+              <option value="43">郑州</option>
+              <option value="44">长沙</option>
+              <option value="45">海南</option>
+              <option value="46">佛山</option>
+              <option value="47">南昌</option>
+              <option value="48">珠海</option>
+              <option value="49">东莞</option>
+              <option value="410">南宁</option>
+              <option value="51">西安</option>
+              <option value="52">重庆</option>
+              <option value="53">昆明</option>
+              <option value="54">乌鲁木齐</option>
+              <option value="55">兰州</option>
+              <option value="56">贵阳</option>
+              <option value="57">西宁</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="address">详细地址</label>
+          <div class="col-sm-5">
+            <input class="form-control" id="address_detail" name="address_detail" placeholder="详细地址" type="text" value="fdgs">
+          </div>
+        </div>
+   <!--     <div class="form-group">
+          <label class="col-sm-2 control-label" for="address">公司地图</label>
+     
+        
+        </div>-->
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="size"><span>*</span>&nbsp;企业规模</label>
+          <div class="col-sm-5">
+            <select class="form-control" name="scale" id="scale">
+              <option value="1" selected="selected">15人以下</option>
+              <option value="2">15-50人</option>
+              <option value="3">50-150人</option>
+              <option value="4">150-500人</option>
+              <option value="5">500-2000人</option>
+              <option value="6">2000人以上</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="nature"><span>*</span>&nbsp;公司性质</label>
+          <div class="col-sm-5">
+            <select class="form-control" name="property" id="property">
+              <option value="1" selected="selected">私企</option>
+              <option value="2">外企</option>
+              <option value="3">国企</option>
+              <option value="4">中外合资</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="industry_id"><span>*</span>&nbsp;所属行业</label>
+          <div class="col-sm-5">
+            <select class="form-control" name="industry" id="industry">
+              <option value="1" selected="selected">互联网</option>
+              <option value="2">移动互联网</option>
+              <option value="3">游戏</option>
+              <option value="4">电子商务</option>
+              <option value="5">新媒体</option>
+              <option value="6">广告</option>
+              <option value="7">金融</option>
+              <option value="8">IT/软件</option>
+              <option value="9">通信</option>
+              <option value="10">教育</option>
+              <option value="99">其他</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="abstract"><span>*</span>&nbsp;一句话亮点介绍</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="lightspot_introduce" name="lightspot_introduce" value="哈哈哈gd" placeholder="如：团队优势、福利待遇、办公环境等" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="description"><span>*</span>&nbsp;企业介绍</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" rows="6" id="about" name="about" placeholder="">德青源dfs</textarea>
+            <span class="help-block">来点个性、特色、无节操的介绍文案吧！如果想显著提高求职者的投递荷尔蒙的话！</span></div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="website">企业网站</label>
+          <div class="col-sm-5">
+            <input class="form-control" id="website" name="website" placeholder="公司网站或公司官方微博地址" type="text" value="">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="contact_name"><span>*</span>&nbsp;联系人</label>
+          <div class="col-sm-5">
+            <input class="form-control" id="contact" name="contact" value="胡甜甜" placeholder="联系人姓名" type="text" value="胡甜甜" >
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="contact_phone"><span>*</span>&nbsp;联系方式</label>
+          <div class="col-sm-5">
+            <input class="form-control" id="phone" name="phone" value="010-12345678" placeholder="手机或座机" type="text" value="">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="city_id"><span>*</span>&nbsp;企业Logo</label>
+          <div class="col-sm-5">
+            <div id="logo">
+              <!-- IE9 下需通过label 触发隐藏的文件选择，jquery.form.js才不会报错 -->
+              <label style="display: block; margin-top: 5px;"><img id="logo_img" class="img-border" src="">
+              <input id="logo" name="logo" accept="image/gif, image/jpeg, image/png" style="display:none;" type="file">
+              <span id="logo-edit-btn" style="">修改</span></label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button id="login" type="button" class="btn btn-lg btn-highlight btn-min-width-100" >保存</button>
+              </div>
+        </div>
+      </form>
+      <div class="modal" id="logo_select" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" onClick="cancelFaceSelect();"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+              <h4 class="modal-title">截取Logo</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="img"><img id="origin_face_img" src="" style="float:left;"></div>
+                <div style="clear: left;"></div>
+              </div>
+              <form id="save_logo_form" method="post" action="/WeiUserAdmin/saveLogo">
+                <input name="origin_image_name" value="" id="origin_image_name" type="hidden">
+                <input name="x1" value="" id="x1" type="hidden">
+                <input name="y1" value="" id="y1" type="hidden">
+                <input name="x2" value="" id="x2" type="hidden">
+                <input name="y2" value="" id="y2" type="hidden">
+                <input name="w" value="" id="w" type="hidden">
+                <input name="h" value="" id="h" type="hidden">
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">保存</button>
+           
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+    <!-- col -->
+  </div>
+  <!-- row -->
+</div>
+<!-- footer -->
+<div class="footer bg-white idx-minwidth">
+  <div class="footer-wrap idx-width">
+    <div class="footer-sns">
+      <a href="http://weibo.com/u/3306361973" class="footer-sns-weibo hide-text" target="_blank" title="新浪微博"></a>
+      <a href="javascript:void(0);" class="footer-sns-weixin" target="_blank" title="微信">
+        <i class="footer-sns-weixin-expand"></i>
+      </a>
+      <a href="http://t.qq.com/mukewang999" class="footer-sns-qqweibo hide-text" target="_blank" title="腾讯微博"></a>
+      <a href="http://user.qzone.qq.com/283903724/" class="footer-sns-qzone hide-text" target="_blank" title="QQ空间"></a>
+    </div>
+  </div>
+  <div class="footer-link">
+    <a href="" title="关于我们">关于我们</a>
+    <a href="" title="人才招聘">人才招聘</a>
+    <a href="" title="讲师招募">讲师招募</a>
+    <a href="" title="联系我们">联系我们</a>
+    <a href="" title="意见反馈">意见反馈</a>
+    <a href="" title="友情链接">友情链接</a>
+  </div>
+  <div class="footer-copyright">
+    © 2013 imooc.com  京ICP备13046642号
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

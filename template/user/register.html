@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/Index_aio1.css' %}">
+{% endblock %}
+{% block content %}
+  <div class="container container-register">
+    <div class="row row-register">
+      <h2 class="text-center">企业注册</h2>
+      <h2 class="text-center" id="result"></h2>
+      <form id="form" class="form-horizontal" role="form" method="post" action="{% url 'user:register' %}" autocomplete="off">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="" class="col-sm-4 control-label control-label-required">用户名</label>
+          <div class="col-sm-5">
+            <input id="username" name="username" placeholder="（用于登录账号）" class="form-control" type="text">
+            <div class="none"><span></span></div>
+          </div>
+        </div>
+        <div class="form-group">
+          {% if form.password.errors %}
+           <div class="alert alert-danger" role="alert">{{ form.password.errors }}
+          {% endif %}
+          <label for="" class="col-sm-4 control-label control-label-required">密码</label>
+          <div class="col-sm-5">
+            <input id="password" name="password" placeholder="密码（至少6位）" value="" class="form-control" type="password">
+            <div class="none"><span></span></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="" class="col-sm-4 control-label control-label-required">确认密码</label>
+          <div class="col-sm-5">
+            <input id="repeat" name="password_again" placeholder="" value="" class="form-control" type="password">
+            <div class="none"><span></span></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-4 col-sm-5">
+            <button id="login" type="submit" class="btn btn-block btn-primary btn_button">注册</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-4 col-sm-5">
+            <p class="form-control-static"><a href="{% url 'user:login' %}">已有账号登录</a></p>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- END .row-->
+  </div>
+  <!-- END .container-register -->
+{% endblock %}

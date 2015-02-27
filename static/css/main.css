@@ -1,0 +1,109 @@
+.nav_bar{
+    height: 80px;
+    background: none repeat scroll 0% 0% #FFF;
+    border-bottom: 3px solid #0C0;
+    overflow: hidden;
+}
+.nav_bar .title_main{
+    width: 80%;
+    margin:2px auto 0px;
+}
+
+.nav_bar .nav_logo{
+    float: left;
+    height: 80px;
+}
+
+.nav_logo img {
+    width: 180px;
+    padding-top: 10px;
+}
+
+.nav_bar .slogan{
+    float: left;
+    font-size: 2em;
+    margin-top: 20px;
+    margin-right: 10px;
+    color: #666;
+}
+
+.nav_bar .booking {
+    float: left;
+    font-size: 2em;
+    margin-top: 20px;
+    margin-right: 10px;
+    color: #666;
+}
+
+.nav_bar .phone{
+    color: #E43;
+}
+
+.nav_bar .button{
+    padding: 20px 5px;
+    margin: 0 10px;
+    /*padding-bottom: -10px*/
+    font-size: 2em;
+    float: left;
+    /*background-color: #F9F9F9;*/
+}
+
+.nav_bar p{
+    float: left;
+    font-size: 2em;
+    margin: 15px 0;
+    color: #599100;
+}
+
+/*.nav_bar .button a{
+    display: block;
+    float:left;
+    margin: 0 5px
+}
+*/
+.nav_bar .button:hover{
+    /*color: #463265;*/
+    background-color: #F9F9F9;
+}
+
+.nav_bar .button a:hover{
+    text-decoration: none;
+}
+
+.panel-simple-border{
+    padding: 20px 10px;
+}
+
+.panel-with-tabs .panel-heading{
+    border-color: #0C0;
+}
+
+.btn_button{
+    background-color: #E43;
+    border-color: #E00;
+}
+
+.btn_button:hover{
+    background-color: #E43;
+    border-color: #E00;
+}
+/*.nva_bar .nav_logo img{
+    height: 80px;
+}
+*/
+.footer {
+    height: 100px;
+    background: none repeat scroll 0% 0% #0C0;
+    padding-top: 40px;
+}
+
+.footer p {
+    line-height: 30px;
+    font-family: "宋体";
+    color: #D8DBEB;
+    text-align: center;
+}
+
+/*#renmen_5{
+    float: left;
+}*/

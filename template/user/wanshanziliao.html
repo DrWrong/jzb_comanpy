@@ -1,0 +1,253 @@
+{% extends "base.html" %}
+{% load none_filter %}
+
+{% load staticfiles %}
+{% block title %}
+  <title>{{ title }}</title>
+{% endblock %}
+{% block js %}
+  <script src="{% static url 'js/jquery1.js' %}" type="text/javascript"></script>
+  <script src="http://img.jb51.net/jslib/jquery/jquery.js" type="text/javascript"></script>
+{% endblock %}
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/Index_aio1.css' %}">
+  <link href="{% static 'css/bootstrap-datetimepicker.css' %}" rel="stylesheet">
+  <link href="{% static 'css/imgareaselect-default.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block content %}
+  <div class="container container-register">
+    <div class="row row-register">
+      <h2 class="text-center">完善企业资料</h2>
+      <form id="update_profile_form" class="form-horizontal" method="post" action="#" autocomplete="off">
+        <input id="logo_url" value="" type="hidden">
+        <div class="form-group">
+          <label for="" class="col-sm-4 control-label control-label-required">企业名称</label>
+          <div class="col-sm-5">
+            <input class="form-control" id="name" name="name" placeholder="与营业执照一致的企业全名"
+            value="{{ form.name.value|convert_none }}" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="" class="col-sm-4 control-label">企业简称</label>
+          <div class="col-sm-5">
+            <input class="form-control" id="name_abb" name="name_abb" placeholder="大众熟知的企业简称" value="{{ form.name_abb.value|convert_none }}"type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="" class="col-sm-4 control-label control-label-required">手机</label>
+          <div class="col-sm-5">
+            <input id="phone" name="phone" placeholder="手机" class="form-control" value="{{ form.phone.value|convert_none }}"type="text">
+          </div>
+          <div class="input">
+            <button type="button" id="verify_code_send" class="btn btn-default"  style="width:120px;">免费获取验证码</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="" class="col-sm-4 control-label">验证码</label>
+          <div class="col-sm-5">
+            <input class="form-control" id="code" name="code" placeholder="" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="" class="col-sm-4 control-label control-label-required">所在城市</label>
+          <div class="col-sm-5">
+            <script type="text/javascript">
+            // $(document).ready(function(){
+            // $("#province").change(function(){
+            // $("#province option").each(function(i,o){
+            // if($(this).attr("selected"))
+            // {
+            // $(".city").hide();
+            // $(".city").eq(i).show();
+            // }
+            // });
+            // });
+            // $("#province").change();
+            // });
+            </script>
+            <select id="province" name="city" style="width:120px;" >
+              <option>请选择省份</option>
+              <option>北京市</option>
+            </select>
+            <select class="city"  style="width:120px;">
+              <option>请选择城市</option>
+            </select>
+            <select class="city">
+              <option>东城区</option>
+              <option>西城区</option>
+              <option>崇文区</option>
+              <option>宣武区</option>
+              <option>丰台区</option>
+              <option>石景山区</option>
+              <option>海淀区</option>
+              <option>门头沟区</option>
+              <option>房山区</option>
+              <option>通州区</option>
+              <option>顺义区</option>
+              <option>昌平区</option>
+              <option>大兴区</option>
+              <option>怀柔区</option>
+              <option>平谷区</option>
+              <option>密云县</option>
+              <option>延庆县(延庆镇)</option>
+              <option>朝阳区</option>
+            </select>
+            <select class="city">
+              <option>黄浦</option>
+              <option>卢湾</option>
+              <option>徐汇</option>
+              <option>长宁</option>
+              <option>静安</option>
+            </select>
+            <select class="city">
+              <option>南京</option>
+              <option>镇江</option>
+              <option>苏州</option>
+              <option>南通</option>
+              <option>扬州</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="" class="col-sm-4 control-label">详细地址</label>
+          <div class="col-sm-5">
+            <input class="form-control" id="address_detail" name="address_detail" value="{{ form.address_detail.value|convert_none }}"placeholder="公司地址" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="" class="col-sm-4 control-label control-label-required">企业规模</label>
+          <div class="col-sm-5">
+            <select class="form-control" name="scale" id="scale">
+              <option {% if form.scale.value == 1 %}
+                selected="selected"
+              {% endif %} value="1">15人以下</option>
+              <option {% if form.scale.value == 2 %}
+                selected="selected"
+              {% endif %}  value="2">15-50人</option>
+              <option {% if form.scale.value == 3 %}
+                selected="selected"
+              {% endif %} value="3">50-150人</option>
+              <option {% if form.scale.value == 4 %}
+                selected="selected"
+              {% endif %}  value="4">150-500人</option>
+              <option {% if form.scale.value == 5 %}
+                selected="selected"
+              {% endif %}  value="5">500-2000人</option>
+              <option {% if form.scale.value == 6 %}
+                selected="selected"
+              {% endif %} value="6">2000人以上</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="" class="col-sm-4 control-label control-label-required">QQ</label>
+          <div class="col-sm-5">
+            <input type="text"  class="form-control" name="qq" id="qq" value="{{ form.qq.value|convert_none }}">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="" class="col-sm-4 control-label control-label-required">邮箱</label>
+          <div class="col-sm-5">
+            <input type="text"  class="form-control" name="email" id="email" value="{{ form.email.value|convert_none }}">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="" class="col-sm-4 control-label control-label-required">公司性质</label>
+          <div class="col-sm-5">
+            <select class="form-control" name="property" id="property">
+              <option {% if form.property.value == 1 %}
+                selected="selected"
+              {% endif %} value="1">私企</option>
+              <option {% if form.property.value == 2 %}
+                selected="selected"
+              {% endif %} value="2">外企</option>
+              <option {% if form.property.value == 3 %}
+                selected="selected"
+              {% endif %} value="3">国企</option>
+              <option {% if form.property.value == 4 %}
+                selected="selected"
+              {% endif %} value="4">中外合资</option>
+            </select>
+          </div>
+        </div>
+           <div class="form-group">
+          <label for="" class="col-sm-4 control-label control-label-required">企业介绍</label>
+          <div class="col-sm-7">
+            <textarea class="form-control" rows="6" id="about" name="about" placeholder="" >{{ form.about.value|convert_none }}</textarea>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-sm-4 control-label">企业网站</label>
+            <div class="col-sm-5">
+              <input class="form-control" id="website" name="website" value="{{ form.website.value|convert_none }}"placeholder="企业网站或官方微博地址" type="text">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-sm-4 control-label control-label-required">联系人</label>
+            <div class="col-sm-5">
+              <input class="form-control" id="contact" name="contact" value="{{ form.contact.value|convert_none }}"placeholder="请输入联系人姓名" type="text">
+            </div>
+          </div>
+        </form>
+        <div class="form-group">&nbsp;</div>
+        <div class="form-group">
+          <label for="" class="col-sm-4 control-label control-label-required">企业Logo</label>
+          <div class="col-sm-5">
+            <div id="logo">
+              <!-- IE9 下需通过label 触发隐藏的文件选择，jquery.form.js才不会报错 -->
+              <form action="../tupian.php" enctype="multipart/form-data" method="post"
+                name="logo">上传文件：<input type="file" name="pic" /><br>
+                <input class="form-control" id="enterprise_id" name="user_id" placeholder="请输入联系人姓名" type="text" value="1">
+                <input type="submit" value="上传" />
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="" class="col-sm-4 control-label control-label-required">企业营业执照</label>
+          <div class="col-sm-5">
+            <div id="logo">
+              <!-- IE9 下需通过label 触发隐藏的文件选择，jquery.form.js才不会报错 -->
+              <label style="display: block;"><img id="logo_img" class="img-border" src="{% static 'img/plus.png' %}">
+                <input id="logo_file" name="logo" accept="image/gif, image/jpeg, image/png" style="display:none;" type="file">
+                <span id="logo-edit-btn" style="">上传</span></label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-5">
+              <button type="button" class="btn btn-lg btn-block btn-highlight submit" id="login" onClick="return false;">立即免费开通</button>
+            </div>
+          </div>
+          <div class="modal" id="logo_select" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" onClick="cancelFaceSelect();"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                  <h4 class="modal-title">截取Logo</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="img"><img id="origin_face_img" src="" style="float:left;"></div>
+                    <div style="clear: left;"></div>
+                  </div>
+                  <form id="save_logo_form" method="post" action="/WeiUserAdmin/saveLogo">
+                    <input name="origin_image_name" value="" id="origin_image_name" type="hidden">
+                    <input name="x1" value="" id="x1" type="hidden">
+                    <input name="y1" value="" id="y1" type="hidden">
+                    <input name="x2" value="" id="x2" type="hidden">
+                    <input name="y2" value="" id="y2" type="hidden">
+                    <input name="w" value="" id="w" type="hidden">
+                    <input name="h" value="" id="h" type="hidden">
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="login">保存</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END .row-->
+      </div>
+    {% endblock %}
+

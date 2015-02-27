@@ -1,0 +1,67 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html xmlns:wb="http://open.weibo.com/wb" lang="zh-cn">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta name="renderer" content="webkit">
+        <meta name="keywords" content="1212招聘节,双12招聘节,招聘周,招聘,互联网招聘,移动互联网招聘,社交招聘,IT招聘,微信招聘,微博招聘,豆瓣招聘,跳槽,高薪职位">
+        <meta name="description" content="最靠谱的招聘社区。1212创业企业招聘周。">
+        {% block title %}
+           <title>互联网招聘|移动互联网招聘|社交招聘</title>
+        {% endblock %}
+        {% block css %}
+            <link rel="stylesheet" type="text/css" href="{% static 'css/Index_aio.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static 'css/Glyphicons.min.css' %}">
+        {% endblock %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]><script src="/Public/html5shiv-3.7.2/html5shiv.min.js"></script>
+        <script src="/Public/Respond/dest/respond.min.js"></script><![endif]-->
+        <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+        {% block js %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="nav_bar">
+            <div class="title_main">
+                <div class="nav_logo">
+                    <a href="#">
+                    <img src="{% static 'img/logo.png' %}"></a>
+                </div>
+                <div class="slogan">
+                    传单派发/客服电销/推广
+                </div>
+                <div class="booking">
+                    <img src="{% static 'img/booking_iphone_icon.png' %}">
+                    电话续约：
+                    <span class="phone">
+                        4000-800-487
+                    </span>
+                </div>
+                <div class="button">
+                    <a href="{% url 'user:login' %}">登陆</a>
+                </div>
+                <p>|</p>
+                <div class="button">
+                    <a href="{% url 'user:register' %}">注册</a>
+                </div>
+            </div>
+        </div>
+        <div id="main_content">
+        {% block content %}
+        {% endblock %}
+        </div>
+        <div class="footer">
+            <p><i>©</i><em>jianzhibao</em>.com&nbsp;&nbsp;京公网安备<em>110105000809</em>号&nbsp;&nbsp;京ICP证<em>12030679号-5</em></p>
+        </div>
+        <!-- bottom end -->
+        <script src="{% static 'js/slides.min.jquery.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+        {% block script %}
+
+        {% endblock %}
+    </body>
+</html>
