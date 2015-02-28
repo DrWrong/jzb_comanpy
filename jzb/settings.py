@@ -68,9 +68,9 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-# API_URL = "http://23.97.68.128/jzb-enterprise-web/api"
+API_URL = "http://23.97.68.128/jzb-enterprise-web/api"
 
-API_URL = "http://192.168.199.136/jzb-enterprise-web/api"
+# API_URL = "http://192.168.199.136/jzb-enterprise-web/api"
 COMMON_API_URL = "http://23.97.68.128/api/general-jobs"
 
 LANGUAGE_CODE = 'en-us'
