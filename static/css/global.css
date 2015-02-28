@@ -5,10 +5,10 @@
 
 
 
-.fa-calendar{ background:url(img/guan.png) no-repeat; display:block; width:40px; height:40px; margin:auto;}
-.fa-calendar1{ background:url(img/zg.png) no-repeat; display:block; width:50px; height:50px; margin:auto;}
-.fa-calendar2{ background:url(img/qz.png) no-repeat; display:block; width:50px; height:50px; margin:auto;}
-.fa-calendar3{ background:url(img/zs.png) no-repeat; display:block; width:50px; height:50px; margin:auto;}
+.fa-calendar4{ background:url(/static/img/cal1.png) no-repeat; display:block; width:50px; height:50px; margin:auto;}
+.fa-calendar1{ background:url(/static/img/guan.png) no-repeat; display:block; width:50px; height:50px; margin:auto;}
+.fa-calendar2{ background:url(/static/img/zl.png) no-repeat; display:block; width:50px; height:50px; margin:auto;}
+.fa-calendar3{ background:url(/static/img/zg.png) no-repeat; display:block; width:50px; height:50px; margin:auto;}
 .row1{ width:1070px; margin:auto;}
 .header{
   position: relative;

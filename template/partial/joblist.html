@@ -1,0 +1,13 @@
+{% load none_filter %}
+<table class="table job_table">
+    <tbody>
+        {% for job in hot_jobs %}
+            <tr>
+                <td><a href="{% url 'job_detail' job.id %}">{{ job.title }}</a> </td>
+                <td>{{ job.workingAddress}}</td>
+                <td>{{ job.workingTime }}</td>
+                <td>{{ job.workingSalary }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

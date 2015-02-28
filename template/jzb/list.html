@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% load none_filter %}
 
 {% block title %}
     <title>职位列表&nbsp;-&nbsp;</title>
@@ -21,68 +20,19 @@
         <div class="row">
             <div class="col-md-9" role="main">
                 <div class="row job-section">
-                    <div class="job-section-nav"><span>找到&nbsp;<span class="cOrange">60102</span>&nbsp;个相关职位</span></div>
+                    <div class="job-section-nav"><span>找到&nbsp;<span class="cOrange">{{ count }}</span>&nbsp;个相关兼职</span></div>
                     <div class="job-section-body">
                         <div class="job_search">
-                            <!-- 按城市搜索 -->
-                            <dl class="page_sort">
-                                <dt>城市</dt>
-                                <dd class="on"><a href="">全部</a></dd>
-                                <dd><a href="javascript:void(0);" onClick="zzSearch.ShowLine(2)" id="LineFont1">北京市</a> </dd>
-                                <dd><a href="javascript:void(0);" onClick="zzSearch.ShowLine(3)" id="LineFont2">上海</a> </dd>
-                            </dl>
-                            <div class="search_btm0 LineStop districtNav" id="Line2" style="">
-                                <dl class="page_sort" id="Q1" >
-                                    <dt>地区</dt>
-                                    <dd class="on"><a href="">全部</a></dd>
-                                    <dd><a href="">东城区</a></dd>
-                                    <dd><a href="">西城区</a></dd>
-                                    <dd><a href="">崇文区</a></dd>
-                                    <dd><a href="">宣武区</a></dd>
-                                    <dd><a href="">丰台区</a></dd>
-                                    <dd><a href="">石景山区</a></dd>
-                                    <dd><a href="">海淀区</a></dd>
-                                    <dd><a href="">门头沟区</a></dd>
-                                    <dd><a href="">房山区</a></dd>
-                                    <dd><a href="">通州区</a></dd>
-                                    <dd><a href="">顺义区</a></dd>
-                                    <dd><a href="">昌平区</a></dd>
-                                    <dd><a href="">大兴区</a></dd>
-                                    <dd><a href="">怀柔区</a></dd>
-                                    <dd><a href="">平谷区</a></dd>
-                                    <dd><a href="">密云县</a></dd>
-                                    <dd><a href="">延庆县(延庆镇)</a></dd>
-                                    <dd><a href="">朝阳区</a></dd>
-                                </dl>
-                            </div>
-                            <!-- 按行业搜索 -->
-                            <dl class="page_sort">
-                                <dt>行业</dt>
-                                <dd class="on"><a href="">全部</a></dd>
-                                <dd><a href="">电话客服</a></dd>
-                                <dd><a href="">发传单</a></dd>
-                            </dl>
+                            {% include "partial/jobfilter.html" %}
                         </div>
-                        <div class="sortbar"><span class="right">共&nbsp;<span class="cOrange">60102</span>&nbsp;个靠谱职位</span>
-                        <ul class="sortbar_btns">
-                            <li><a href="">热门<span class="ico_sortbar_btns ico_sortbar_btns_btm2"></span></a></li>
-                            <li><a href="">最新<span class="ico_sortbar_btns ico_sortbar_btns_btm1"></span></a></li>
-                            <li><a href="=">薪水<span class="ico_sortbar_btns ico_sortbar_btns_btm1"></span></a></li>
+                        <div class="sortbar"><span class="right">共&nbsp;<span class="cOrange">{{ count }}</span>&nbsp;个靠谱兼职</span>
+         <!--                <ul class="sortbar_btns">
+                            <li><a href="#">热门<span class="ico_sortbar_btns ico_sortbar_btns_btm2"></span></a></li>
+                            <li><a href="#">最新<span class="ico_sortbar_btns ico_sortbar_btns_btm1"></span></a></li>
+                            <li><a href="#">薪水<span class="ico_sortbar_btns ico_sortbar_btns_btm1"></span></a></li>
                         </ul>
-                    </div>
-                    {% for job in hot_jobs %}
-
-                    <div id="renmen_2" >
-                        <div id="renmen_3"> </div>
-                        <div id="renmen_4"><a href="" >{{ job.title }}</a></div>
-                        <div  id="renmen_5">
-                            <div id="z" class="renmen_6">{{ job.companyName|convert_none }}</div>
-                            <div id="z" class="renmen_7" >{{ job.workingAddress|convert_none }}</div>
-                            <div id="z"   class="renmen_7">{{ job.workingTime|convert_none }}</div>
-                            <div id="z"  class="renmen_8" >{{ job.workingSalary|convert_none }}</div>
-                        </div>
-                    </div>
-                    {% endfor %}
+ -->                    </div>
+                    {% include "partial/joblist.html" %}
                     <div class="pages">
                         <div class="page">
                             <a href='{% url "list" %}'>首页</a>

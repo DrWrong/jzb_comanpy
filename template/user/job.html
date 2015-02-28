@@ -1,0 +1,124 @@
+{% extends "user/base.html" %}
+{% load none_filter %}
+
+{% block main_content %}
+  {{ form.errors }}
+  <h3 class="wei-user-admin-title-bar">发布职位</h3>
+  <div class="icon-job-post-step step-2"></div>
+  <form class="form-horizontal" id="form" method="post" action="{{ posturl }}">
+    {% csrf_token %}
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="need_count">兼职分类&nbsp;<span>*</span></label>
+      <div class="col-sm-5">
+        <select class="form-control" name="category" id="category">
+          {% for category in categorys %}
+            <option value="{{ category.id }}" {% if category.selected %}
+              selected="selected"
+            {% endif %}>{{ category.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="name">兼职标题&nbsp;<span>*</span></label>
+      <div class="col-sm-5">
+        <input class="form-control" id="title" name="title" placeholder="必填" type="text" value="{{ form.title.value|convert_none }}">
+        <span class="help-block">职位名称不能重复</span></div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="salary_min">工资待遇&nbsp;<span>*</span></label>
+        <div class="col-sm-5 form-inline">
+          <input id="salary" class="form-control" style="width: 250px;" placeholder="请输入数字" name="salary" value="{{ form.salary.value|convert_none }}">
+          <select id="yuan" class="form-control" style="width: 80px;" name="salary_unit">
+            <option {% if form.salary_unit.value == 1 %}
+                 selected="selected"
+            {% endif %} value="1">元/小时</option>
+            <option {% if form.salary_unit.value == 2 %}
+                selected="selected"
+            {% endif %} value="2">元/天</option>
+            <option {% if form.salary_unit.value == 3 %}
+                selected="selected"
+            {% endif %} value="3">元/月</option>
+            <option {% if form.salary_unit.value == 4 %}
+                selected="selected"
+            {% endif %} value="4">元/(次,单)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="need_count">招聘人数&nbsp;<span>*</span></label>
+        <div class="col-sm-5 form-inline">
+          <input class="form-control" style="width: 60px;" id="number" name="number" placeholder="数字" type="text" value="{{ form.number.value|convert_none }}">
+          &nbsp;
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="city_id">地点&nbsp;<span>*</span></label>
+        <div class="col-sm-10">
+          <select id="province" class="pull-left form-control" name="address" style="width:15%;" >
+            <option></option>
+            <option>北京市</option>
+          </select>
+          <select class="pull-left form-control" name="city" style="width:15%;" >
+            <option></option>
+          </select>
+          <select class="pull-left form-control" name="district" style="width:20%;" >
+            <option></option>
+          </select>
+          <div>
+            <span class="pink slt_txt">暂时只开通列表中的城市</span>
+          </div>
+         </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="min_degree">截止时间&nbsp;<span>*</span></label>
+        <div class="col-sm-5">
+          <input value="{{form.end_time.value|convert_none }}" name="end_time" id="deadline"  class="form-control" style="width: 150px;"  >
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="responsibility">联系人&nbsp;<span>*</span></label>
+        <div class="col-sm-5">
+          <input class="form-control" id="contact" name="contact" value="{{ form.contact.value|convert_none }}"placeholder="必填" type="text">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="responsibility">电话&nbsp;<span>*</span></label>
+        <div class="col-sm-5">
+          <input class="form-control" id="phong" name="phone" value="{{ form.phone.value|convert_none }}" placeholder="必填" type="text">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="responsibility">QQ&nbsp;<span>*</span></label>
+        <div class="col-sm-5">
+          <input class="form-control" id="qq" name="qq" value="{{ form.qq.value|convert_none }}"placeholder="必填" type="text">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="requirement">职位描述&nbsp;<span>*</span></label>
+        <div class="col-sm-8">
+          <table >
+            <tbody>
+              <tr>
+                <td>
+                  <textarea style="height: 70px;" class="form-control"  name="working_content" id="working_content" value="{{ form.working_content.value|convert_none }}" placeholder="请输入相关兼职信息，兼职具体地址，兼职具体时间，工资待遇，工作要求等等...">工作时间：
+                  岗位要求：
+                  具体内容：</textarea>
+                  <p class="pink" style="padding:5px 0px;">（兼职描述请勿包含QQ群、微信号等信息，以免审核不通过哟~）</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="height:10px;"></td>
+              </tr>
+            </tbody></table>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">&nbsp;</label>
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary btn_button" id="login">发布</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  {% endblock %}

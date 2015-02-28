@@ -1,0 +1,42 @@
+<form action="{% url 'list' %}" id="filterform">
+<div class="row job_filter">
+    <div class="filteritem_name">城市</div>
+    <div>
+        <label class="radion-inline" >
+            <input  class="select_box_button" type="radio" name="city" {% if not view.request.GET.city  %}
+                checked="checked"
+            {% endif %} value=""><span>全部</span>
+        </label>
+        {% for city in citys %}
+            <label class="radion-inline">
+            <input class="select_box_button" type="radio" {% if city.id == view.request.GET.city %}
+                checked="checked"
+            {% endif %} name="city" value="{{ city.id }}"><span>{{ city.name }}</span>
+            </label>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="row job_filter">
+    <div class="filteritem_name">地区</div>
+    <div id="district_filter">
+       <label class="radion-inline">
+            <input  class="select_box_button value_change_submit" type="radio" name="district" value=""><span>全部</span>
+        </label>
+    </div>
+</div>
+
+<div class="row job_filter">
+    <div class="filteritem_name">兼职</div>
+    <div>
+    <label class="radion-inline">
+        <input  class="select_box_button value_change_submit" type="radio" name="job_type" checked="checked" value=""><span>全部</span>
+    </label>
+    {% for category in categorys %}
+        <label class="radion-inline">
+            <input  class="select_box_button value_change_submit" type="radio" name="job_type" value="{{ category.id }}"><span>{{ category.name }}</span>
+        </label>
+    {% endfor %}
+    </div>
+</div>
+</form>

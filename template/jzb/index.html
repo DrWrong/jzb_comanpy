@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% load none_filter %}
 {% block content %}
     <div class="container">
         <div class="row1">
@@ -23,202 +22,86 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-3 col-home-210">
-                <div class="panel panel-simple panel-simple-border panel-user-dashboard js-login-panel">
-                    <div class="panel-heading">企业登录</div>
-                    <div class="panel-body">
-                        <form role="form" id="login_form" method="post" action="{% url 'user:login' %}">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <label for="email">用户名</label>
-                                <input class="form-control" id="username" name="username" placeholder="用户名" type="text">
-                            </div>
-                            <div class="form-group">
-                                <label for="password">密码</label>
-                                <input class="form-control" id="password" name="password" placeholder="登录密码" type="password">
-                            </div>
-                            <div class="checkbox">
-                                <a class="pull-right" href="../zhaohuimima.php">找回密码</a> </div>
+            {% if not user.is_login %}
+                <div class="col-xs-3 col-home-210">
+                    <div class="panel panel-simple panel-simple-border panel-user-dashboard js-login-panel">
+                        <div class="panel-heading">企业登录</div>
+                        <div class="panel-body">
+                            <form role="form" id="login_form" method="post" action="{% url 'user:login' %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="email">用户名</label>
+                                    <input class="form-control" id="username" name="username" placeholder="用户名" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">密码</label>
+                                    <input class="form-control" id="password" name="password" placeholder="登录密码" type="password">
+                                </div>
+                                <div class="checkbox">
+                                    <a class="pull-right" href="../zhaohuimima.php">找回密码</a>
+                                </div>
                                 <button type="button" class="btn btn-block btn-primary js-btn-login btn_button" id="login">登录</button>
                             </form>
                             <div class="text-block text-right"><a href="{% url 'user:register' %}">免费注册</a> </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row" style="margin:auto; width:1070px;">
-                <div class="col-xs-9 col-home-960">
-                    <div class="panel panel-with-tabs">
-                        <div class="panel-heading">
-                            <div>
-                            </div>
+            {% endif %}
+        </div>
+        <div class="row" style="margin:auto; width:1070px;">
+            <div class="col-xs-9 col-home-960">
+                <div class="panel panel-with-tabs">
+                    <div class="panel-heading">
+                        <div>
                         </div>
-                        <div id="shaixuadn" style="width:960px; height:180px;  display:block; border-bottom:2px solid #0C0; padding-bottom:10px;">
-                            <div class="job_search">
-                                <div style=" width:960px; float:left;">
-                                    <dl class="page_sort">
-                                        <dt>城市</dt>
-                                        <dd class="on"><a href="">全部</a></dd>
-                                        <dd><a href="javascript:void(0);" onClick="zzSearch.ShowLine(2)" id="LineFont1">北京市</a> </dd>
-                                        <dd><a href="javascript:void(0);" onClick="zzSearch.ShowLine(3)" id="LineFont2">上海</a> </dd>
-                                    </dl>
-                                    <div class="search_btm0 LineStop districtNav" id="Line1" style=" display:none；">
-                                        <dl class="page_sort"id="Q"  >
-                                            <dt>地区</dt>
-                                            <dd class="on"><a href="">全部</a></dd>
-                                            <dd>
-                                            <a href="javascript:void(0);" onClick="zzSearch.ShowLine(1)" id="LineFont1">
-                                            北京市</a>
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                    <!-- 按行业搜索 -->
-                                    <div class="search_btm0 LineStop districtNav" id="Line2" style=" display: none;">
-                                        <dl class="page_sort" id="Q1" >
-                                            <dt>地区</dt>
-                                            <dd class="on"><a href="">全部</a></dd>
-                                            <dd><a href="">大兴区</a></dd>
-                                            <dd><a href="">朝阳区</a></dd>
-                                            <dd><a href="">海淀区</a></dd>
-                                            <dd><a href="">崇文门区</a></dd>
-                                            <dd><a href="">东城区</a></dd>
-                                            <dd><a href="">西城区</a></dd>
-                                            <dd><a href="">丰台区</a></dd>
-                                            <dd><a href="">石景山区</a></dd>
-                                            <dd><a href="">通洲区</a></dd>
-                                            <dd><a href="">顺义区</a></dd>
-                                            <dd><a href="">房山区</a></dd>
-                                            <dd><a href="=">昌平区</a></dd>
-                                            <dd><a href="=">怀柔区</a></dd>
-                                        </dl>
-                                    </div>
-                                    <dl class="page_sort" id="Q2" style="display:none;">
-                                        <dt>地区</dt>
-                                        <dd class="on"><a href="">全部</a></dd>
-                                        <dd><a href="">罗湖区</a></dd>
-                                        <dd><a href="">福田区</a></dd>
-                                        <dd><a href="">南山区</a></dd>
-                                        <dd><a href="">宝安区</a></dd>
-                                        <dd><a href="">龙岗区</a></dd>
-                                        <dd><a href="">盐田区</a></dd>
-                                        <dd><a href="">光明新区</a></dd>
-                                        <dd><a href="">坪山新区</a></dd>
-                                        <dd><a href="">龙华新区</a></dd>
-                                        <dd><a href="">大鹏新区</a></dd>
-                                        <dd><a href="=">其他</a></dd>
-                                    </dl>
-                                    <div class="search_btm0 LineStop districtNav" id="Line3" style=" display: none;">
-                                        <dl class="page_sort" id="Q3" style="">
-                                            <dt>地区</dt>
-                                            <dd class="on"><a href="">全部</a></dd>
-                                            <dd><a href="">宝山</a></dd>
-                                            <dd><a href="">崇明</a></dd>
-                                            <dd><a href="">嘉定</a></dd>
-                                            <dd><a href="">青浦</a></dd>
-                                            <dd><a href="">松江</a></dd>
-                                            <dd><a href="">金山</a></dd>
-                                            <dd><a href=""> 奉贤</a></dd>
-                                            <dd><a href="">浦东新区</a></dd>
-                                            <dd><a href="">闵行</a></dd>
-                                            <dd><a href="">普陀</a></dd>
-                                            <dd><a href="">黄浦</a></dd>
-                                            <dd><a href="">徐汇</a></dd>
-                                            <dd><a href="">长宁</a></dd>
-                                            <dd><a href="">卢湾</a></dd>
-                                            <dd><a href="">杨浦</a></dd>
-                                            <dd><a href="">闸北</a></dd>
-                                            <dd><a href="">虹口</a></dd>
-                                            <dd><a href="">静安</a></dd>
-                                            <dd><a href="=">其他</a></dd>
-                                        </dl>
-                                    </div>
-                                    <!-- 按一级职能分类搜索 -->
-                                    <dl class="page_sort">
-                                        <dt>兼职</dt>
-                                        <dd class="on"><a href="">全部</a></dd>
-                                        <dd><a href="">电话客服</a></dd>
-                                        <dd><a href="">发传单</a></dd>
-                                    </dl>
-                                    <!-- 按二级、三级职能分类搜索 -->
-                                    <!-- 按薪资搜索 -->
-                                    <!-- 按学历搜索 -->
-                                    <!-- 按经验搜索 -->
-                                    <script language="javascript">
-                                    function test(){
-                                    $("#Q3").css("display","none");
-                                    $("#Q1").css("display","none");
-                                    $("#Q2").css("display","none");
-                                    $("#Q").css("display","block");
-                                    }
-                                    function test1(){
-                                    $("#Q").css("display","none");
-                                    $("#Q1").css("display","none");
-                                    $("#Q2").css("display","block");
-                                    $("#Q3").css("display","none");
-                                    }
-                                    function test2(){
-                                    $("#Q").css("display","none");
-                                    $("#Q1").css("display","none");
-                                    $("#Q2").css("display","none");
-                                    $("#Q3").css("display","block");
-                                    }
-                                    </script>
-                                </div>
-                            </div>
-                            <span class="panel-title" id="remen_1" >热门职位</span>
-                        </div>
-                        {% for job in hot_jobs %}
-                            <div id="renmen_2" >
-                                <div  id="renmen_5">
-                                    <div id="z" class="renmen_6">{{ job.title }}</div>
-                                    <div id="z" class="renmen_7" >{{ job.workingAddress|convert_none}}</div>
-                                    <div id="z"   class="renmen_7">{{ job.workingTime|convert_none }}</div>
-                                    <div id="z"  class="renmen_8" >{{ job.workingSalary }}</div>
-                                </div>
-                            </div>
-                        {% endfor %}
                     </div>
-                    <div class="q" style=" "><a href="{% url 'list' %}" style="">更多...</a></div>
+                    <div id="shaixuadn" style="width:960px; min-height:180px;  display:block; border-bottom:2px solid #0C0; padding-bottom:10px;">
+                        <div class="job_search">
+                        {% include 'partial/jobfilter.html' %}
+                        </div>
+                        <span class="panel-title" id="remen_1" >热门兼职</span>
+                    </div>
+                    {% include "partial/joblist.html" %}
                 </div>
+                <div class="q" style=" "><a href="{% url 'list' %}" style="">更多...</a></div>
             </div>
         </div>
-    {% endblock %}
-
+    </div>
+{% endblock %}
 {% block script %}
     <script type="text/javascript">
-        $('#slides').slides({
-            preload: true,
-            preloadImage: '{% static "img/loading.gif" %}',
-            play: 5000,
-            pause: 2500,
-            hoverPause: true
-        });
+    $('#slides').slides({
+    preload: true,
+    preloadImage: '{% static "img/loading.gif" %}',
+    play: 5000,
+    pause: 2500,
+    hoverPause: true
+    });
     </script>
     <script type="text/javascript">
     $("#login").click(function(){
-        var data = $("#login_form").serializeArray();
-        $.ajax({
-            url: '{% url "user:login" %}',
-            type: 'POST',
-            dataType: 'json',
-            data: data,
-        })
-        .done(function(data) {
-            // console.log("done");
-            console.log(data);
-            if(data.status==0){
-                location.href = "{% url 'user:index' %}";
-            } else{
-                alert(data.msg);
-            };
-        })
-        .fail(function() {
-            console.log("error");
-        })
-        .always(function() {
-            console.log("complete");
-        });
-
+    var data = $("#login_form").serializeArray();
+    $.ajax({
+    url: '{% url "user:login" %}',
+    type: 'POST',
+    dataType: 'json',
+    data: data,
+    })
+    .done(function(data) {
+    // console.log("done");
+    console.log(data);
+    if(data.status==0){
+    location.href = "{% url 'user:index' %}";
+    } else{
+    alert(data.msg);
+    };
+    })
+    .fail(function() {
+    console.log("error");
+    })
+    .always(function() {
+    console.log("complete");
+    });
     })
     </script>
 {% endblock %}

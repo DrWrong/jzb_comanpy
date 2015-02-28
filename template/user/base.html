@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="row wei-user-heading">
+        </div>
+    </div>
+    <div class="container-fluid container-nav-tabs-2">
+        <div class="container">
+            <ul class="nav nav-tabs-2" role="tablist">
+                <li><a href="{% url 'user:index' %}">职位管理</a></li>
+                <!-- <li><a href="#">简历管理</a></li> -->
+                <li><a href="{% url 'user:enterpriseinfo' %}">企业资料</a></li>
+                <li class="{% url 'user:password_reset' %}"><a href="#">账号设置</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row wei-user-admin-container">
+            <div class="col-xs-3 col-md-2 sidebar-menu">
+                <ul class="list-group">
+                    <li class="list-group-item"><a class="text-label" href="{% url 'user:index' %}"><i class="fa-calendar4"></i>职位管理</a></li>
+                 <!--    <li class="list-group-item notifier-number" data-notifier-number="0"><a class="text-label" href=""><i class="fa-calendar1"></i>简历管理</a></li>
+ -->                    <!--<li class="list-group-item"><a class="text-label" href=""><i class="fa fa-2x fa-comments-o"></i>评论管理</a></li>-->
+                    <li class="list-group-item"><a class="text-label" href="{% url 'user:enterpriseinfo' %}"><i class="fa-calendar2"></i>企业资料</a></li>
+                    <li class="list-group-item"><a class="text-label" href="{% url 'user:password_reset' %}"><i class="fa-calendar3"></i>账号设置</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-15 col-md-10 wei-user-admin-content">
+            {% block main_content %}
+
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

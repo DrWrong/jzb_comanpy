@@ -1,0 +1,48 @@
+{% extends "user/base.html" %}
+{% load staticfiles %}
+{% block main_content %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-switch.css' %}">
+  <div class="wei-user-admin-title-bar">
+    <div class="container-nav-tabs-2">
+      <ul class="nav nav-tabs-2" role="tablist">
+        <li class="active"><a href="">全部职位</a></li>
+        <!--  <li><a href="">正在热招</a></li>
+        <li><a href="">已关闭职位</a></li>-->
+      </ul>
+    </div>
+    <div class="btn-toolbar btn-toolbar-inline">
+      <div class="btn-group"><a href="{% url 'user:publishjob' %}" class="btn btn-default">发布职位</a></div>
+      <!--       <div class="btn-group"><a class="dropdown-toggle btn btn-default" data-toggle="dropdown"><i class="fa fa-share-alt"></i>&nbsp;分享全部职位&nbsp;<i class="icon-caret-down"></i></a>
+      <ul class="dropdown-menu btn-group-share" aria-labelledby="dLabel">
+        <li><a href="javascript:;" onClick="J.share_wei_user('14296', 'weibo');"><i class="fa fa-weibo"></i>&nbsp;分享长微博</a></li>
+        <li><a href="javascript:;" onClick="J.share_wei_user('14296', 'weixin', function() {setup_weixin_qr('/e/14296/power');$('#weixin_modal').modal('show');});"><i class="fa fa-weixin"></i>&nbsp;分享至微信</a></li>
+        <li><a href="javascript:;" onClick="J.share_wei_user('14296', 'qq');"><i class="fa fa-qq"></i>&nbsp;分享至QQ群</a></li>
+      </ul>
+    </div> -->
+  </div>
+</div>
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th style="text-align:center;">兼职名称</th>
+      <th style="width:60px; text-align:center;">招聘人数</th>
+      <th style="width:140px; text-align:center;">发布时间</th>
+      <th style="width:330px; text-align:center;">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for job in jobs %}
+      <tr>
+        <td style=" text-align:center;"> <a class="text-primary" href="#" title="">{{ job.title }}</a></td>
+        <td  style=" text-align:center;">{{ job.applyNumber }}</td>
+        <td style=" text-align:center;">{{job.publicTime }}</td>
+        <td  style=" text-align:center;white-space:nowrap;">
+          <a href="" class="btn btn-default">简历</a>
+          <a href="../bianjizhiwei.php?id=6" class="btn btn-default">编辑</a>
+          </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<div class="page"> <span class="pre"></span> <span class="next"></span> <span class="total">共1页 / 共1条</span></div>
+{% endblock %}

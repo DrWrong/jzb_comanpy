@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}">
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/alertify.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/public.css' %}">
+
+{% endblock %}
+{% block content %}
+  <div class="container" style="width:960px; margin:auto; margin-top:10px;">
+    <div class="row">
+      <div class="col-md-9" role="main">
+        <div class="row job-section">
+          <div class="job-section-body">
+            <div class="center">
+              <div class="pleft">
+                <div class="xq">
+                  <div class="title b_btm">
+                    <div class="title">{{ job.title }}</div>
+                    <div class="t_info"> <span>兼职类型：<span>{{ job.type }}</span></span> <span><span class="ng-binding" ng-bind="comment_num">0</span><span>条评论</span></span> <span class="right">发布时间：<span>{{ time }}</span></span> </div>
+                  </div>
+                  <ul class="from">
+                    <li class="right m20_btm">
+                    </li>
+                    <li>发布公司：<a href="" target="_blank" class="blue" onMouseOver="document.getElementById('info').style.display='block';" onMouseOut="document.getElementById('info').style.display='none';">广州佰智沃华文化发展有限公司</a>
+                    <div id="info">
+                      <p class="arr"></p>
+                      <p class="cont"> 人力资源部门专门负责招聘承接企业各项活动策划和执行，公司拥有雄厚的资源以及人才 </p>
+                    </div>
+                  </li>
+                  <li>发布人：<span>{{ job.contact }}</span></li>
+                  <li>招聘人数：<span> </span></li>
+                  <li>工资待遇：<span>{{ job.salary }}</span></li>
+                  <li>工作地区：<span>广州 天河</span></li>
+                </ul>
+                <ul class="desc b_btm">
+                  <li>
+                    <div class="title">兼职描述：</div>
+                    <p class="content" id="content"> </p>
+                    <div id="job_content">
+                    {% autoescape off %}
+                    {{ job.content }}
+                    {% endautoescape %}
+                    </div>
+                    <p></p>
+                  </li>
+                </ul>
+                <ul class="contact">
+                  <li>联系人：<span>{{ job.contact }}</span></li>
+                  <li>联系电话：<span class="num">{{ job.phone }}</span></li>
+                  <li class="grey">提示：<span>凡收取费用，需缴纳押金的企业均有欺诈嫌疑，请您警惕！</span></li>
+                  <li>
+                    <ul class="share right">
+                      <li><a class="sc" id="collection_a" ng-click="collection_bt()">收藏</a></li>
+                      <li> <a href="#" class="jiathis jiathis_txt jtico fx">分享</a> <a class="jiathis_counter_style" style="padding:0; cursor:pointer;"><span title="累计分享0次" id="jiathis_counter_10" class="jiathis_button_expanded jiathis_counter jiathis_bubble_style">0</span></a> </li>
+                      <li><a class="ts" onClick="ts_show();">投诉</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                <!-- JiaThis Button BEGIN -->
+              </div>
+            </div>
+            <!--  pright  -->
+            <!--  右边模块-推荐兼职信息 -->
+            <!--  pright end  -->
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+  <!-- hreder  end -->

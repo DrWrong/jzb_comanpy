@@ -1,3 +1,7 @@
+/*a{
+    color: black;
+}
+*/
 .nav_bar{
     height: 80px;
     background: none repeat scroll 0% 0% #FFF;
@@ -102,6 +106,53 @@
     font-family: "宋体";
     color: #D8DBEB;
     text-align: center;
+}
+
+.job_table {
+    width: 960px;
+    max-width: 960px;
+    /*font-size: 2em;*/
+    color: #B89C8E;
+}
+
+.job_table tr {
+    height: 50px;
+}
+
+.job_filter{
+    line-height: 25px;
+    padding: 5px 0px;
+    margin: 0px;
+    border: 0px none;
+
+}
+
+.filteritem_name{
+    color: #999;
+    font-weight: bold;
+    display: inline;
+    padding-right: 10px;
+    font-size: 14px;
+    float:left;
+    /*line-height: 25px;*/
+}
+
+.radion-inline{
+    margin-right: 5px;
+    /*line-height: 25px;*/
+    color: #599100;
+    font-weight: 100;
+}
+
+
+.select_box_button{
+    display: none;
+}
+
+.select_box_button:checked+ span{
+    color: #FFF;
+    background-color: #569ED9;
+    padding: 2px 5px;
 }
 
 /*#renmen_5{
